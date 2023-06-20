@@ -86,9 +86,8 @@ const createPhoto = () => ({
 
 const photos = Array.from({length: PHOTO_COUNT}, createPhoto);
 
-for (let i = 0; i < photos.length; i++){
-  console.log(photos[i])
-}
+console.log(photos)
+
 
 
 
