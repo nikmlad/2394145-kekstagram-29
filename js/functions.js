@@ -25,3 +25,15 @@ function extractionNumbers(string) {
   }
   return number.length == 0 ?  NaN : +number;
 }
+
+const isWorkDay = (startTime, endTime, meetTime, meetDuration) => {
+  const getTime = (time) => {
+      const timeArr = time.split(':');
+      return Number(timeArr[0]) * 60 + (Number(timeArr[1]));
+  }
+  if (getTime(meetTime) + meetDuration >= getTime(startTime) && getTime(meetTime) + meetDuration <= getTime(endTime)) {
+      return true;
+  } else {
+      return false;
+  }
+}
