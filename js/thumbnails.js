@@ -5,13 +5,13 @@ const containerPictures = document.querySelector('.pictures');
 
 const fragmentPictures = document.createDocumentFragment();
 
-for (let i = 0; i < photos.length; i++){
+for (let i = 0; i < randomPictures.length; i++){
   const randomPicture = templatePicture.cloneNode(true);
 
-  randomPicture.querySelector('.picture__img').src = photos[i].url;
-  randomPicture.querySelector('.picture__img').alt = photos[i].description;
-  randomPicture.querySelector('.picture__likes').textContent = photos[i].likes;
-  randomPicture.querySelector('.picture__comments').textContent = photos[i].comments.length;
+  randomPicture.querySelector('.picture__img').src = randomPictures[i].url;
+  randomPicture.querySelector('.picture__img').alt = randomPictures[i].description;
+  randomPicture.querySelector('.picture__likes').textContent = randomPictures[i].likes;
+  randomPicture.querySelector('.picture__comments').textContent = randomPictures[i].comments.length;
 
   fragmentPictures.appendChild(randomPicture);
 }
