@@ -12,7 +12,7 @@ for (let i = 0; i < randomPictures.length; i++){
   randomPicture.querySelector('.picture__img').alt = randomPictures[i].description;
   randomPicture.querySelector('.picture__likes').textContent = randomPictures[i].likes;
   randomPicture.querySelector('.picture__comments').textContent = randomPictures[i].comments.length;
-
+  randomPicture.querySelector('.picture').id = randomPictures[i].id;
   fragmentPictures.appendChild(randomPicture);
 }
 
