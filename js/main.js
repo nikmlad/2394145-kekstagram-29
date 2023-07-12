@@ -1,6 +1,6 @@
-import { fragmentPictures } from "./thumbnails.js";
+import { renderThumbnails } from "./thumbnails.js";
 
-console.log(fragmentPictures)
+renderThumbnails();
 
 
 

@@ -29,5 +29,6 @@ export function createRandomIdFromRangeGenerator (min, max) {
     previousValues.push(currentValue);
     return currentValue;
   };
-}
+}// проверка что нажат ескейп
+export const isEscapeKey = (evt) => evt.key === 'Escape';
 
