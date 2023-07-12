@@ -8,12 +8,20 @@ const commentsCount = document.querySelector('.comments-count');
 const description = document.querySelector('.social__caption');
 const comments = document.querySelector('.social__comments');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img img ');
-const pictures = document.querySelector('.pictures');
 const commentTemplate = document.querySelector('.social__comment');
 const socialCommentCount = document.querySelector('.social__comment-count');
 const commentsLoader = document.querySelector('.comments-loader');
 const body = document.body;
 const bigPictureCancel = document.querySelector('.big-picture__cancel');
+const onDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)){
+    evt.preventDefault();
+    closeBigPicture();
+  }
+}
+const onCancelClick = (evt) => {
+  closeBigPicture();
+}
 
 // генерим комментарии
 function commentsCreate (photoItem) {
@@ -32,13 +40,20 @@ for (let i = 0; i < photoItem.comments.length; i++) {
 comments.appendChild(commentFragment)
 }
 
-//открытие окна большой картинки по клику
-pictures.addEventListener('click', (evt) => {
-  let thumbnail = evt.target.closest('.picture');
+// закрытие окна
+function closeBigPicture () {
+  bigPicture.classList.add('hidden');
+  document.removeEventListener('keydown', onDocumentKeydown);
+  //containerPictures.removeEventListener('click', onContainerPicturesClick);
+  bigPictureCancel.removeEventListener('click', onCancelClick)
+  body.classList.remove('modal-open');
+}
+
+function renderBigPicture (thumbnailId) {
   //открытие окна полного размера
   bigPicture.classList.remove('hidden');
   // берем данные с картинки на которую нажали
-  let photoItem = photos.find(x => x.id === +thumbnail.id);
+  let photoItem = photos.find(x => x.id === +thumbnailId);
   // заполняем окно данными
   bigPictureImg.src = photoItem.url;
   likesCount.textContent = photoItem.likes;
@@ -51,26 +66,12 @@ pictures.addEventListener('click', (evt) => {
   commentsLoader.classList.add('hidden')
   // убираем прокрутку задника
   body.classList.add('modal-open')
-});
 
-
-// закрытие окна
-function closeBigPicture () {
-  bigPicture.classList.add('hidden');
-}
-
-// событие на крестик
-bigPictureCancel.addEventListener('click', (evt) => {
-  closeBigPicture();
-})
+  // событие на крестик
+bigPictureCancel.addEventListener('click', onCancelClick)
 
 // событие на ескейп
-document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)){
-    evt.preventDefault();
-    closeBigPicture();
-  }
-})
+document.addEventListener('keydown', onDocumentKeydown)
+};
 
-
-export {}
+export {renderBigPicture}
