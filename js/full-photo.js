@@ -41,7 +41,7 @@ const addComment = () => {
   }
   numberOfCommentsNow += NUMBER_OF_COMMENTS;
   // проверка не превшена ли ко-во комментариев и скрваем когда все комментарии открыты
-  if (numberOfCommentsNow > commentsArray.length) {
+  if (numberOfCommentsNow >= commentsArray.length) {
     commentsMomentCount.textContent = commentsArray.length;
     loadMore.classList.add('hidden')
   } else {
