@@ -1,10 +1,10 @@
 import { photos } from "./data.js";
 import { renderBigPicture } from "./full-photo.js";
+
 const randomPictures = photos;
 const templatePicture = document.querySelector('#picture').content;
 const containerPictures = document.querySelector('.pictures');
 const fragmentPictures = document.createDocumentFragment();
-
 
 function renderThumbnails () {
   for (let i = 0; i < randomPictures.length; i++){
@@ -18,14 +18,12 @@ function renderThumbnails () {
   }
   containerPictures.appendChild(fragmentPictures)
 }
-
+// открытие большой картинки
 containerPictures.addEventListener('click', (evt) => {
-  let thumbnail = evt.target.closest('.picture');
+  const thumbnail = evt.target.closest('.picture');
   if(thumbnail) {
     renderBigPicture(thumbnail.id)
     evt.preventDefault();
-  } else {
-    return
   }
 });
 

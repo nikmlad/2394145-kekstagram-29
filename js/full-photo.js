@@ -26,7 +26,7 @@ const onDocumentKeydown = (evt) => {
   }
 }
 
-const onCancelClick = (evt) => {
+const onCancelClick = () => {
   closeBigPicture();
 }
 
