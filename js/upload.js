@@ -33,7 +33,7 @@ uploadButton.addEventListener('change', () => {
 });
 
 // закрытие окна с формой
-const closeModal = () => {
+function closeModal () {
   uploadForm.reset();
   uploadModal.classList.add('hidden');
   document.body.classList.remove('modal-open');
