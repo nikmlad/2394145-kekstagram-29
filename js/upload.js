@@ -10,14 +10,6 @@ const commentField = document.querySelector('.text__description');
 
 const isTextFieldFocused = () => document.activeElement === commentField || document.activeElement === hashtagField;
 
-const closeModal = () => {
-  uploadForm.reset();
-  uploadModal.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-  uploadForm.removeEventListener('input', disableConfirmButton);
-  document.removeEventListener('keydown', onDocumentKeydown);
-};
-
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt) && !isTextFieldFocused()){
     evt.preventDefault();
@@ -39,3 +31,12 @@ uploadButton.addEventListener('change', () => {
   // событие закрытия по крестику
   uploadCansel.addEventListener('click', onCancelClick);
 });
+
+// закрытие окна с формой
+const closeModal = () => {
+  uploadForm.reset();
+  uploadModal.classList.add('hidden');
+  document.body.classList.remove('modal-open');
+  uploadForm.removeEventListener('input', disableConfirmButton);
+  document.removeEventListener('keydown', onDocumentKeydown);
+};

@@ -77,7 +77,7 @@ function renderBigPicture (thumbnailId) {
   //открытие окна полного размера
   bigPicture.classList.remove('hidden');
   // берем данные с картинки на которую нажали
-  const photoItem = photos.find(x => x.id === +thumbnailId);
+  const photoItem = photos.find((x) => x.id === +thumbnailId);
 
   // заполняем окно данными
   bigPictureImg.src = photoItem.url;
