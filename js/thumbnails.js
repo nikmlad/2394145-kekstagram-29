@@ -16,13 +16,13 @@ function renderThumbnails () {
     randomPicture.querySelector('.picture').id = randomPictures[i].id;
     fragmentPictures.appendChild(randomPicture);
   }
-  containerPictures.appendChild(fragmentPictures)
+  containerPictures.appendChild(fragmentPictures);
 }
 // открытие большой картинки
 containerPictures.addEventListener('click', (evt) => {
   const thumbnail = evt.target.closest('.picture');
   if(thumbnail) {
-    renderBigPicture(thumbnail.id)
+    renderBigPicture(thumbnail.id);
     evt.preventDefault();
   }
 });

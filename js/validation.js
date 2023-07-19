@@ -5,7 +5,7 @@ const submitButton = document.querySelector('.img-upload__submit');
 
 const hashtagArray = () => hashtagField.value.split(' ').filter(Boolean);
 
-const HASHTAG_TEMPLATE = /^#[a-zа-яё0-9]{1,19}$/i
+const HASHTAG_TEMPLATE = /^#[a-zа-яё0-9]{1,19}$/i;
 const MAX_COMMENT_LENGTH = 140;
 const MAX_HASHTAG_AMOUNTH = 5;
 
@@ -16,7 +16,7 @@ const pristine = new Pristine(uploadForm, {
   errorTextParent: 'img-upload__field-wrapper',
   errorTextTag: 'div',
   errorTextClass: 'img-upload__field-error'
-})
+});
 
 //Проверка комментария
 const validateComment = () => commentField.value.length <= MAX_COMMENT_LENGTH;
@@ -39,7 +39,7 @@ const validateHashtagSame = () => {
         return false;
       }
     }
-  return true
+  return true;
 };
 
 pristine.addValidator(hashtagField, validateHashtag, 'Ошибка в хештеге');
@@ -50,9 +50,9 @@ pristine.addValidator(commentField, validateComment, 'Слишком длинн�
 // дизейбл кнопки про ошибках валидации
 const disableConfirmButton = () => {
   if (!pristine.validate()) {
-    submitButton.disabled = true
+    submitButton.disabled = true;
   } else {
-    submitButton.disabled = false
+    submitButton.disabled = false;
   }
 }
 

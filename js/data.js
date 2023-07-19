@@ -6,7 +6,7 @@ const DESCRIPTION = [
   'За двумя зайцами погонишься — рыбку из пруда не выловишь, делу время, а отмеришь семь раз…',
   'Кем бы ты ни был, кем бы ты не стал, помни, где ты был и кем ты стал.',
   'Иногда жизнь — это жизнь, а ты в ней иногда.'
-]
+];
 
 const MESSAGE = [
   'Всё отлично!',
@@ -15,7 +15,7 @@ const MESSAGE = [
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-]
+];
 
 const NAMES = [
   'Иван',
@@ -26,7 +26,8 @@ const NAMES = [
   'Юлия',
   'Люпита',
   'Вашингтон',
-]
+];
+
 const PHOTO_COUNT = 25;
 
 const generatePhotoId = createRandomIdFromRangeGenerator(1, 25);
@@ -42,7 +43,7 @@ const createComments = () => ({
   avatar: `img/avatar-${generateCommentsAvatar()}.svg`,
   message: getRandomArrayElement(MESSAGE),
   name: getRandomArrayElement(NAMES),
-})
+});
 
 const createPhoto = () => ({
   id: generatePhotoId(),
@@ -50,7 +51,7 @@ const createPhoto = () => ({
   description: getRandomArrayElement(DESCRIPTION),
   likes: generatePhotoLikes(),
   comments: Array.from({length: generateCommentsCount()}, createComments)
-})
+});
 
 const photos = Array.from({length: PHOTO_COUNT}, createPhoto);
 

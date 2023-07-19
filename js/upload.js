@@ -1,5 +1,5 @@
 import { isEscapeKey } from "./util.js";
-import { disableConfirmButton } from "./validation.js"
+import { disableConfirmButton } from "./validation.js";
 
 const uploadButton = document.querySelector('.img-upload__input');
 const uploadModal = document.querySelector('.img-upload__overlay');
