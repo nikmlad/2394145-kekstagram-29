@@ -1,4 +1,4 @@
-import {getRandomInteger, createRandomIdFromRangeGenerator} from "./util.js";
+import {getRandomInteger, createRandomIdFromRangeGenerator} from './util.js';
 
 const DESCRIPTION = [
   'Лучше быть последним — первым, чем первым — последним.',
@@ -55,4 +55,4 @@ const createPhoto = () => ({
 
 const photos = Array.from({length: PHOTO_COUNT}, createPhoto);
 
-export {photos}
+export {photos};

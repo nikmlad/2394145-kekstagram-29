@@ -1,5 +1,5 @@
-import { photos } from "./data.js";
-import { renderBigPicture } from "./full-photo.js";
+import { photos } from './data.js';
+import { renderBigPicture } from './full-photo.js';
 
 const randomPictures = photos;
 const templatePicture = document.querySelector('#picture').content;
@@ -27,4 +27,4 @@ containerPictures.addEventListener('click', (evt) => {
   }
 });
 
-export {renderThumbnails}
+export {renderThumbnails};

@@ -1,6 +1,5 @@
-
-import { photos } from "./data.js"
-import { isEscapeKey } from "./util.js";
+import { photos } from './data.js';
+import { isEscapeKey } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const likesCount = document.querySelector('.likes-count');
@@ -24,62 +23,61 @@ const onDocumentKeydown = (evt) => {
     evt.preventDefault();
     closeBigPicture();
   }
-}
+};
 
 const onCancelClick = () => {
   closeBigPicture();
-}
+};
 
 // добавление комментариев
 const addComment = () => {
   for (let i = numberOfCommentsNow; i < numberOfCommentsNow + NUMBER_OF_COMMENTS; i++){
     if (i >= commentsArray.length){
-      break
+      break;
     } else {
-      commentFragment.appendChild(commentsArray[i])
+      commentFragment.appendChild(commentsArray[i]);
     }
   }
   numberOfCommentsNow += NUMBER_OF_COMMENTS;
   // проверка не превшена ли ко-во комментариев и скрваем когда все комментарии открыты
   if (numberOfCommentsNow >= commentsArray.length) {
     commentsMomentCount.textContent = commentsArray.length;
-    loadMore.classList.add('hidden')
+    loadMore.classList.add('hidden');
   } else {
     commentsMomentCount.textContent = numberOfCommentsNow;
   }
 
   comments.appendChild(commentFragment);
-
-}
+};
 
 // генерим комментарии
 function commentsCreate (photoItem) {
   //создаем новые комментарии
   for (let i = 0; i < photoItem.comments.length; i++) {
-    let comment = commentTemplate.cloneNode(true);
-    comment.querySelector('img').src = photoItem.comments[i].avatar
-    comment.querySelector('img').alt = photoItem.comments[i].name
-    comment.querySelector('p').textContent = photoItem.comments[i].message
-    commentsArray.push(comment)
+    const comment = commentTemplate.cloneNode(true);
+    comment.querySelector('img').src = photoItem.comments[i].avatar;
+    comment.querySelector('img').alt = photoItem.comments[i].name;
+    comment.querySelector('p').textContent = photoItem.comments[i].message;
+    commentsArray.push(comment);
   }
-}
+};
 
 // закрытие окна
 function closeBigPicture () {
   bigPicture.classList.add('hidden');
   document.removeEventListener('keydown', onDocumentKeydown);
-  bigPictureCancel.removeEventListener('click', onCancelClick)
+  bigPictureCancel.removeEventListener('click', onCancelClick);
   body.classList.remove('modal-open');
-  commentsArray =[];
+  commentsArray = [];
   numberOfCommentsNow = 0;
   loadMore.classList.remove('hidden')
-}
+};
 
 function renderBigPicture (thumbnailId) {
   //открытие окна полного размера
   bigPicture.classList.remove('hidden');
   // берем данные с картинки на которую нажали
-  let photoItem = photos.find(x => x.id === +thumbnailId);
+  const photoItem = photos.find(x => x.id === +thumbnailId);
 
   // заполняем окно данными
   bigPictureImg.src = photoItem.url;
@@ -95,7 +93,7 @@ function renderBigPicture (thumbnailId) {
   }
 
   //очищаем комментарии в данной разметке
-  comments.innerHTML = ''
+  comments.innerHTML = '';
 
   // вызов функции создания комментариев
   commentsCreate(photoItem);
@@ -104,16 +102,16 @@ function renderBigPicture (thumbnailId) {
   addComment();
 
   // убираем прокрутку задника
-  body.classList.add('modal-open')
+  body.classList.add('modal-open');
 
   // событие на крестик
-  bigPictureCancel.addEventListener('click', onCancelClick)
+  bigPictureCancel.addEventListener('click', onCancelClick);
 
   // событие на ескейп
-  document.addEventListener('keydown', onDocumentKeydown)
+  document.addEventListener('keydown', onDocumentKeydown);
 };
 
 // событие загрузить еще
-loadMore.addEventListener('click', addComment)
+loadMore.addEventListener('click', addComment);
 
-export {renderBigPicture}
+export {renderBigPicture};
