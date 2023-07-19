@@ -39,4 +39,4 @@ function closeModal () {
   document.body.classList.remove('modal-open');
   uploadForm.removeEventListener('input', disableConfirmButton);
   document.removeEventListener('keydown', onDocumentKeydown);
-};
+}
