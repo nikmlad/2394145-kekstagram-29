@@ -8,6 +8,16 @@ const uploadCansel = document.querySelector('.img-upload__cancel');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 
+const isTextFieldFocused = () => document.activeElement === commentField || document.activeElement === hashtagField;
+
+const closeModal = () => {
+  uploadForm.reset();
+  uploadModal.classList.add('hidden');
+  document.body.classList.remove('modal-open');
+  uploadForm.removeEventListener('input', disableConfirmButton);
+  document.removeEventListener('keydown', onDocumentKeydown);
+};
+
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt) && !isTextFieldFocused()){
     evt.preventDefault();
@@ -19,16 +29,6 @@ const onCancelClick = () => {
   closeModal();
 };
 
-const closeModal = () => {
-  uploadForm.reset();
-  uploadModal.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-  uploadForm.removeEventListener('input', disableConfirmButton);
-  document.removeEventListener('keydown', onDocumentKeydown);
-};
-
-const isTextFieldFocused = () => document.activeElement === commentField || document.activeElement === hashtagField;
-
 // открытие окна с формой
 uploadButton.addEventListener('change', () => {
   uploadModal.classList.remove('hidden');
@@ -38,5 +38,4 @@ uploadButton.addEventListener('change', () => {
   document.addEventListener('keydown', onDocumentKeydown);
   // событие закрытия по крестику
   uploadCansel.addEventListener('click', onCancelClick);
-
 });

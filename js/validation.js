@@ -28,17 +28,17 @@ const validateHashtag = () => hashtagArray().every((elem) => HASHTAG_TEMPLATE.te
 // Поиск одинаковых хештегов
 const validateHashtagSame = () => {
   const hashtagArr = hashtagArray();
-    for (let i = 0; i < hashtagArr.length; i++) {
-      let count = 0;
-      for (let j = 0; j < hashtagArr.length; j++){
-        if (hashtagArr[i] === hashtagArr[j]) {
-          count++;
-        }
-      }
-      if (count >= 2){
-        return false;
+  for (let i = 0; i < hashtagArr.length; i++) {
+    let count = 0;
+    for (let j = 0; j < hashtagArr.length; j++){
+      if (hashtagArr[i] === hashtagArr[j]) {
+        count++;
       }
     }
+    if (count >= 2){
+      return false;
+    }
+  }
   return true;
 };
 
@@ -54,6 +54,6 @@ const disableConfirmButton = () => {
   } else {
     submitButton.disabled = false;
   }
-}
+};
 
-export {disableConfirmButton}
+export {disableConfirmButton};

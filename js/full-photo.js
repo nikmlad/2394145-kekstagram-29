@@ -60,7 +60,7 @@ function commentsCreate (photoItem) {
     comment.querySelector('p').textContent = photoItem.comments[i].message;
     commentsArray.push(comment);
   }
-};
+}
 
 // закрытие окна
 function closeBigPicture () {
@@ -70,8 +70,8 @@ function closeBigPicture () {
   body.classList.remove('modal-open');
   commentsArray = [];
   numberOfCommentsNow = 0;
-  loadMore.classList.remove('hidden')
-};
+  loadMore.classList.remove('hidden');
+}
 
 function renderBigPicture (thumbnailId) {
   //открытие окна полного размера
@@ -109,7 +109,7 @@ function renderBigPicture (thumbnailId) {
 
   // событие на ескейп
   document.addEventListener('keydown', onDocumentKeydown);
-};
+}
 
 // событие загрузить еще
 loadMore.addEventListener('click', addComment);
