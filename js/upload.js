@@ -1,5 +1,5 @@
 import { isEscapeKey } from './util.js';
-import { disableConfirmButton } from './validation.js';
+import {disableConfirmButton, pristine } from './validation.js';
 
 const uploadButton = document.querySelector('.img-upload__input');
 const uploadModal = document.querySelector('.img-upload__overlay');
@@ -25,18 +25,22 @@ const onCancelClick = () => {
 uploadButton.addEventListener('change', () => {
   uploadModal.classList.remove('hidden');
   document.body.classList.add('modal-open');
-  uploadForm.addEventListener('input', disableConfirmButton);
   // событие закрытия по кнопке
   document.addEventListener('keydown', onDocumentKeydown);
   // событие закрытия по крестику
   uploadCansel.addEventListener('click', onCancelClick);
+  // добавить событие дисейбла кнопки
+  uploadForm.addEventListener('input', disableConfirmButton);
 });
 
 // закрытие окна с формой
 function closeModal () {
   uploadForm.reset();
+  // сбросить ошибки пристин
+  pristine.reset();
+  // убрать событие дисейбла кнопки
+  uploadForm.removeEventListener('input', disableConfirmButton);
   uploadModal.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  uploadForm.removeEventListener('input', disableConfirmButton);
   document.removeEventListener('keydown', onDocumentKeydown);
 }
