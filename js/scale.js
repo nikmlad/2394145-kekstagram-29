@@ -14,18 +14,18 @@ const scaleImage = (value) => {
 };
 
 const scaleMinus = () => {
-  const scaleIntValue = parseInt(scaleValue.value);
+  const scaleIntValue = parseInt(scaleValue.value, 10);
   if (scaleIntValue > MIN_SCALE) {
-    scaleValue.value = (scaleIntValue - STEP_SCALE) + '%';
-    scaleImage(parseInt(scaleValue.value));
+    scaleValue.value = `${scaleIntValue - STEP_SCALE}%`;
+    scaleImage(parseInt(scaleValue.value, 10));
   }
 };
 
 const scalePlus = () => {
-  const scaleIntValue = parseInt(scaleValue.value);
+  const scaleIntValue = parseInt(scaleValue.value, 10);
   if (scaleIntValue < MAX_SCALE) {
-    scaleValue.value = (scaleIntValue + STEP_SCALE) + '%';
-    scaleImage(parseInt(scaleValue.value));
+    scaleValue.value = `${scaleIntValue + STEP_SCALE}%`;
+    scaleImage(parseInt(scaleValue.value, 10));
   }
 };
 
