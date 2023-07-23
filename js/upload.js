@@ -1,5 +1,7 @@
 import { isEscapeKey } from './util.js';
 import {disableConfirmButton, pristine } from './validation.js';
+import {resetScale} from './scale.js';
+import {resetEffects} from './effects.js';
 
 const uploadButton = document.querySelector('.img-upload__input');
 const uploadModal = document.querySelector('.img-upload__overlay');
@@ -43,4 +45,6 @@ function closeModal () {
   uploadModal.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
+  resetScale();
+  resetEffects();
 }
