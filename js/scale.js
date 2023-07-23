@@ -8,6 +8,10 @@ const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 const DEFAULT_SCALE = 100;
 
+const scaleImage = (value) => {
+  imageForScale.style.transform = `scale(${value / 100})`;
+  scaleValue.value = `${value}%`;
+};
 
 const scaleMinus = () => {
   const scaleIntValue = parseInt(scaleValue.value);
@@ -16,6 +20,7 @@ const scaleMinus = () => {
     scaleImage(parseInt(scaleValue.value));
   }
 };
+
 const scalePlus = () => {
   const scaleIntValue = parseInt(scaleValue.value);
   if (scaleIntValue < MAX_SCALE) {
@@ -24,14 +29,9 @@ const scalePlus = () => {
   }
 };
 
-const scaleImage = (value) => {
-  imageForScale.style.transform = `scale(${value / 100})`;
-  scaleValue.value = `${value}%`;
-}
-
 const resetScale = () => {
   scaleImage(DEFAULT_SCALE);
-}
+};
 
 scaleMinusButton.addEventListener('click', scaleMinus);
 scalePlusButton.addEventListener('click', scalePlus);

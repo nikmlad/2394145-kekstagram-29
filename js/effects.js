@@ -1,4 +1,4 @@
-import { effects } from "./effects-settings.js";
+import { effects } from './effects-settings.js';
 const imageForEffect = document.querySelector('.img-upload__preview img');
 const effectSlider = document.querySelector('.effect-level__slider');
 const effectSliderContainer = document.querySelector('.img-upload__effect-level');
@@ -21,7 +21,7 @@ effectSliderContainer.classList.add('hidden');
 
 // меняем параметы слайдера
 const changeSlider = (step, min, max) => {
-  let newSliderSettings = {
+  const newSliderSettings = {
     start: 100,
     step: Number(step),
     connect: 'lower',
@@ -30,8 +30,7 @@ const changeSlider = (step, min, max) => {
       'max': Number(max)
     }
   };
-
-effectSlider.noUiSlider.updateOptions(newSliderSettings);
+  effectSlider.noUiSlider.updateOptions(newSliderSettings);
 };
 
 // выполняем при нажатии на миниатюру эффекта
@@ -64,4 +63,4 @@ const resetEffects = () => {
   effectSliderContainer.classList.add('hidden');
 };
 
-export {resetEffects}
+export {resetEffects};
