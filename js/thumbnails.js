@@ -1,12 +1,12 @@
 import { photos } from './data.js';
+import { getData } from './api.js';
 import { renderBigPicture } from './full-photo.js';
 
-const randomPictures = photos;
 const templatePicture = document.querySelector('#picture').content;
 const containerPictures = document.querySelector('.pictures');
 const fragmentPictures = document.createDocumentFragment();
 
-function renderThumbnails () {
+function renderThumbnails (randomPictures) {
   for (let i = 0; i < randomPictures.length; i++){
     const randomPicture = templatePicture.cloneNode(true);
     randomPicture.querySelector('.picture__img').src = randomPictures[i].url;
@@ -26,5 +26,7 @@ containerPictures.addEventListener('click', (evt) => {
     evt.preventDefault();
   }
 });
+
+
 
 export {renderThumbnails};

@@ -9,6 +9,17 @@ const uploadForm = document.querySelector('.img-upload__form');
 const uploadCansel = document.querySelector('.img-upload__cancel');
 const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
+const uploadSubmit = document.querySelector('.img-upload__submit');
+
+const SubmitButtonText = {
+  IDLE: 'Опубликовать',
+  SUBMITTING: 'Отправляю...',
+};
+
+const toggleSubmitButton = (isDisabled) => {
+  uploadSubmit.disabled = isDisabled;
+  uploadSubmit.textContent = isDisabled ? SubmitButtonText.SUBMITTING : SubmitButtonText.IDLE;
+};
 
 const isTextFieldFocused = () => document.activeElement === commentField || document.activeElement === hashtagField;
 
@@ -48,3 +59,19 @@ function closeModal () {
   resetScale();
   resetEffects();
 }
+
+const setOnFormSubmit = (callback) => {
+  uploadForm.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+
+    if (isValid) {
+      toggleSubmitButton(true);
+      await callback (new FormData(uploadForm));
+      toggleSubmitButton(false);
+
+    }
+  })
+}
+
+export {setOnFormSubmit, closeModal}
