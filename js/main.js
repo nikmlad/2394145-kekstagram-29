@@ -22,4 +22,4 @@ try {
 
 } catch (err) {
   showAlert(err.message);
-};
+}

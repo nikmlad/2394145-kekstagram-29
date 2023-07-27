@@ -1,5 +1,3 @@
-import { photos } from './data.js';
-import { getData } from './api.js';
 import { renderBigPicture } from './full-photo.js';
 
 const templatePicture = document.querySelector('#picture').content;
@@ -26,7 +24,5 @@ containerPictures.addEventListener('click', (evt) => {
     evt.preventDefault();
   }
 });
-
-
 
 export {renderThumbnails};

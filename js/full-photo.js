@@ -20,9 +20,9 @@ let numberOfCommentsNow = 0;
 let commentsArray = [];
 let photos = '';
 
-
-const setDataForPhoto = (data) => photos = data;
-
+function setDataForPhoto (data) {
+  photos = data;
+};
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)){

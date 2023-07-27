@@ -71,7 +71,7 @@ const setOnFormSubmit = (callback) => {
       toggleSubmitButton(false);
 
     }
-  })
-}
+  });
+};
 
-export {setOnFormSubmit, closeModal}
+export {setOnFormSubmit, closeModal};
