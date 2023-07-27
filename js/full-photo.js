@@ -22,7 +22,7 @@ let photos = '';
 
 function setDataForPhoto (data) {
   photos = data;
-};
+}
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)){
