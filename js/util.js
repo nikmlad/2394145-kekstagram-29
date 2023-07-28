@@ -32,3 +32,9 @@ export function createRandomIdFromRangeGenerator (min, max) {
 }// проверка что нажат ескейп
 export const isEscapeKey = (evt) => evt.key === 'Escape';
 
+export const showAlert = (message) => {
+  const alert = document.createElement('div');
+  alert.classList.add('error__alert');
+  alert.textContent = message;
+  document.body.append(alert);
+};

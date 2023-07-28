@@ -1,4 +1,3 @@
-import { photos } from './data.js';
 import { isEscapeKey } from './util.js';
 
 const bigPicture = document.querySelector('.big-picture');
@@ -14,9 +13,16 @@ const bigPictureCancel = document.querySelector('.big-picture__cancel');
 const commentFragment = document.createDocumentFragment();
 const loadMore = document.querySelector('.comments-loader');
 const commentsMomentCount = socialCommentCount.querySelector('.comments-count-start');
+
 const NUMBER_OF_COMMENTS = 5;
+
 let numberOfCommentsNow = 0;
 let commentsArray = [];
+let photos = '';
+
+function setDataForPhoto (data) {
+  photos = data;
+}
 
 const onDocumentKeydown = (evt) => {
   if (isEscapeKey(evt)){
@@ -114,4 +120,4 @@ function renderBigPicture (thumbnailId) {
 // событие загрузить еще
 loadMore.addEventListener('click', addComment);
 
-export {renderBigPicture};
+export {renderBigPicture, setDataForPhoto};
