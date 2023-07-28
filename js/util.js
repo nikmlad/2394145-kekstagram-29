@@ -34,15 +34,7 @@ export const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export const showAlert = (message) => {
   const alert = document.createElement('div');
-  alert.style.position = 'absolute';
-  alert.style.zIndex = '100';
-  alert.style.left = '0';
-  alert.style.top = '0';
-  alert.style.right = '0';
-  alert.style.padding = '10px 3px';
-  alert.style.fontSize = '20px';
-  alert.style.textAlign = 'center';
-  alert.style.backgroundColor = '#f48181';
+  alert.classList.add('error__alert');
   alert.textContent = message;
   document.body.append(alert);
 };

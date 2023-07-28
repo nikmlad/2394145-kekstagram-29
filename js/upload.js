@@ -2,6 +2,8 @@ import { isEscapeKey } from './util.js';
 import {disableConfirmButton, pristine } from './validation.js';
 import {resetScale} from './scale.js';
 import {resetEffects} from './effects.js';
+import {showErrorMessage, showSuccessMessage} from './message.js';
+import {sendData} from './api.js';
 
 const uploadButton = document.querySelector('.img-upload__input');
 const uploadModal = document.querySelector('.img-upload__overlay');
@@ -44,6 +46,8 @@ uploadButton.addEventListener('change', () => {
   uploadCansel.addEventListener('click', onCancelClick);
   // добавить событие дисейбла кнопки
   uploadForm.addEventListener('input', disableConfirmButton);
+  uploadForm.addEventListener('submit', setOnFormSubmit);
+
 });
 
 // закрытие окна с формой
@@ -60,18 +64,21 @@ function closeModal () {
   resetEffects();
 }
 
-const setOnFormSubmit = (callback) => {
-  uploadForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
+async function setOnFormSubmit (evt) {
+  try {
     const isValid = pristine.validate();
-
-    if (isValid) {
+    const data = new FormData(uploadForm);
+    evt.preventDefault();
+     if (isValid) {
       toggleSubmitButton(true);
-      await callback (new FormData(uploadForm));
+      await sendData(data);
       toggleSubmitButton(false);
+      closeModal();
+      showSuccessMessage();
+     }
+  } catch {
+    showErrorMessage();
+    toggleSubmitButton(false);
+  }
+}
 
-    }
-  });
-};
-
-export {setOnFormSubmit, closeModal};
