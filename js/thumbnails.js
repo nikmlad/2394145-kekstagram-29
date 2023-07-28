@@ -1,12 +1,10 @@
 import { renderBigPicture, setDataForPhoto } from './full-photo.js';
-import { getData, sendData } from './api.js';
+import { getData } from './api.js';
 import { showAlert } from './util.js';
 
 const templatePicture = document.querySelector('#picture').content;
 const containerPictures = document.querySelector('.pictures');
 const fragmentPictures = document.createDocumentFragment();
-
-
 
 async function renderThumbnails () {
   try {
