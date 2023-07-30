@@ -27,7 +27,7 @@ function render (photos) {
 async function renderThumbnails () {
   try {
     const data = await getData();
-    const debouncedThumbnails = debounce(render)
+    const debouncedThumbnails = debounce(render);
     init(data, debouncedThumbnails);
     render(data);
   } catch (err) {
@@ -35,8 +35,8 @@ async function renderThumbnails () {
   }
 }
 
- // открытие большой картинки
- containerPictures.addEventListener('click', (evt) => {
+// открытие большой картинки
+containerPictures.addEventListener('click', (evt) => {
   const thumbnail = evt.target.closest('.picture');
   if(thumbnail) {
     renderBigPicture(thumbnail.id);

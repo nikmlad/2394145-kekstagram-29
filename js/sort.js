@@ -17,7 +17,7 @@ const getFilteredPictures = () => {
   switch (currentFilter) {
     case Filter.RANDOM:
       return [...pictures].sort(sortRandomly).slice(0, PICTURES_COUNT);
-   case Filter.DISCUSSED:
+    case Filter.DISCUSSED:
       return [...pictures].sort(sortByComments);
     default:
       return [...pictures];

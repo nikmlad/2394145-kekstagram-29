@@ -69,13 +69,13 @@ async function setOnFormSubmit (evt) {
     const isValid = pristine.validate();
     const data = new FormData(uploadForm);
     evt.preventDefault();
-     if (isValid) {
+    if (isValid) {
       toggleSubmitButton(true);
       await sendData(data);
       toggleSubmitButton(false);
       closeModal();
       showSuccessMessage();
-     }
+    }
   } catch {
     showErrorMessage();
     toggleSubmitButton(false);
