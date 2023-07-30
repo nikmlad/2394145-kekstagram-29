@@ -13,7 +13,7 @@ const hashtagField = document.querySelector('.text__hashtags');
 const commentField = document.querySelector('.text__description');
 const uploadSubmit = document.querySelector('.img-upload__submit');
 const photoPreview = document.querySelector('.img-upload__preview img');
-const effectsPreviews = document.querySelectorAll('.effects__preview')
+const effectsPreviews = document.querySelectorAll('.effects__preview');
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const SubmitButtonText = {
@@ -37,6 +37,11 @@ const onDocumentKeydown = (evt) => {
 
 const onCancelClick = () => {
   closeModal();
+};
+
+const isValidType = (file) => {
+  const fileName = file.name.toLowerCase();
+  return FILE_TYPES.some((it) => fileName.endsWith(it));
 };
 
 // открытие окна с формой
@@ -91,9 +96,3 @@ async function setOnFormSubmit (evt) {
     toggleSubmitButton(false);
   }
 }
-
-const isValidType = (file) => {
-  const fileName = file.name.toLowerCase();
-  return FILE_TYPES.some((it) => fileName.endsWith(it));
-};
-
