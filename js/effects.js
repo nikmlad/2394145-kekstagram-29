@@ -46,7 +46,6 @@ const getTumbnailValue = (evt) => {
     changeSlider(effects[val].step, effects[val].min, effects[val].max);
     imageForEffect.style.filter = `${effects[val].filter}(${effects[val].max}${effects[val].mesure})`;
   }
-  console.log(val)
 };
 
 // меняем значения фильтра при прокрутке ползунка
